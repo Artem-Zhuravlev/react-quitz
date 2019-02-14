@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Quiz.css";
 
 import ActiveQuiz from "../../components/ActiveQuiz/ActiveQuiz";
+import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
 
 class Quiz extends Component {
   state = {
@@ -78,7 +79,7 @@ class Quiz extends Component {
   };
 
   isQuizFinished() {
-    return this.state.activeQuestion === this.state.quiz.length;
+    return this.state.activeQuestion + 1 === this.state.quiz.length;
   }
   render() {
     return (
@@ -87,7 +88,7 @@ class Quiz extends Component {
           <h1>Quiz</h1>
 
           {this.state.isFinished ? (
-            <h1>Finished</h1>
+            <FinishedQuiz />
           ) : (
             <ActiveQuiz
               answers={this.state.quiz[this.state.activeQuestion].answers}
