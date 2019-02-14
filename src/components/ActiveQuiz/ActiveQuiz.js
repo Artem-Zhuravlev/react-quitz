@@ -8,12 +8,18 @@ const ActiveQuiz = props => {
     <div className="ActiveQuiz">
       <p className="Question">
         <span>
-          <strong>1. </strong>
-          How are you?
+          <strong>{props.answerNumber}. </strong>
+          {props.question}
         </span>
-        <small>4 of 12</small>
+        <small>
+          {props.answerNumber} of {props.quizLength}
+        </small>
       </p>
-      <AnswersList answers={props.answers} />
+      <AnswersList
+        answers={props.answers}
+        onAnswerClick={props.onAnswerClick}
+        state={props.state}
+      />
     </div>
   );
 };

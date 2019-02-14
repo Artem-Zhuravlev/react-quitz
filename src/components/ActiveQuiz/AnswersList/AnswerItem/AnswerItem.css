@@ -11,3 +11,13 @@
   color: #000;
   transition: 0.4s;
 }
+
+.AnswerItem.success {
+  background-color: rgb(90, 156, 90);
+  transition: 0.5s;
+}
+
+.AnswerItem.error {
+  background-color: red;
+  transition: 0.5s;
+}
