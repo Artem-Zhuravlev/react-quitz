@@ -7,7 +7,11 @@ const FinishedQuiz = () => {
       <ul>
         <li>
           <strong>1. How are you?</strong>
-          <i className="fa" />
+          <i className="fa fa-times error" />
+        </li>
+        <li>
+          <strong>1. How are you?</strong>
+          <i className="fa fa-check success" />
         </li>
       </ul>
       <p>Right 4 of 10</p>

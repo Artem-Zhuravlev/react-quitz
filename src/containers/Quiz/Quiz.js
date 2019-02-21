@@ -6,6 +6,7 @@ import FinishedQuiz from "../../components/FinishedQuiz/FinishedQuiz";
 
 class Quiz extends Component {
   state = {
+    results: {},
     isFinished: true,
     activeQuestion: 0,
     answerState: null,
@@ -47,11 +48,16 @@ class Quiz extends Component {
     }
 
     const question = this.state.quiz[this.state.activeQuestion];
+    const results = this.state.results;
 
     if (question.rightAnswerId === answerId) {
+      if (!results[answerId] === answerId) {
+        results[answerId] = "success";
+      }
       this.setState({
         answerState: {
-          [answerId]: "success"
+          [answerId]: "success",
+          results
         }
       });
 
@@ -70,9 +76,11 @@ class Quiz extends Component {
         window.clearTimeout(timeout);
       }, 1000);
     } else {
+      results[answerId] = "error";
       this.setState({
         answerState: {
-          [answerId]: "error"
+          [answerId]: "error",
+          results
         }
       });
     }
@@ -88,7 +96,7 @@ class Quiz extends Component {
           <h1>Quiz</h1>
 
           {this.state.isFinished ? (
-            <FinishedQuiz />
+            <FinishedQuiz results={this.state.results} quiz={this.state.quiz} />
           ) : (
             <ActiveQuiz
               answers={this.state.quiz[this.state.activeQuestion].answers}
